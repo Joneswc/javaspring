@@ -129,7 +129,6 @@ public class TaskDao {
 		}
 	}
 
-
 	public void finaliza(Long id) {
 		if(id == null) {
 			throw new IllegalStateException("Id da task não deve ser nula.");
