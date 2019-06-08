@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <link type="text/css" href="resources/css/tasks.css" rel="stylesheet" >
@@ -8,5 +9,6 @@
 <h2>Seja bem vindo ao portal: ${usuariologado.login}</h2>
 <a href="gettasks" >Clique para exibir a lista de Tasks</a>
 <br /><br /><br /><br />
+<c:import url="logout.jsp" />
 </body>
 </html>

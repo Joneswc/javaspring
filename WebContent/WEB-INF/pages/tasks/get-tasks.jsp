@@ -36,5 +36,6 @@
 		</tr>
 	</c:forEach>
 </table>
+<c:import url="logout.jsp" />
 </body>
 </html>

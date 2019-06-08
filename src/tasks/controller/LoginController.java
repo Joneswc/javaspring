@@ -26,4 +26,10 @@ public class LoginController {
 		return "redirect:formlogin";
 	}
 
+	@RequestMapping("logout")
+	public String getLogout(HttpSession session) {
+		session.invalidate();
+		return "redirect:formlogin";
+	}
+
 }

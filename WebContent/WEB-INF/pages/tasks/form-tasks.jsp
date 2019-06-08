@@ -1,5 +1,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,5 +22,6 @@
 		<input name="dataFinalizacao" type="datetime-local" /><br /> -->
 		<input type="submit" value="Cadastrar" >
 	</form>
+<c:import url="logout.jsp" />
 </body>
 </html>

@@ -23,5 +23,6 @@
 			pattern="dd/MM/yyyy"/>" /><br />
 		<input type="submit" value="Editar" >
 	</form>
+<c:import url="logout.jsp" />
 </body>
 </html>
