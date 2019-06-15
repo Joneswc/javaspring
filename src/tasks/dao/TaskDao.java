@@ -1,6 +1,5 @@
 package tasks.dao;
-
-import tasks.jdbc.ConnectionFactory;
+//import tasks.jdbc.ConnectionFactory;
 import tasks.modelo.Task;
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,21 +10,36 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+//injetou uma conexao no dao e injetou o dao nos controladores
+@Repository
 public class TaskDao {
 
-	private Connection connection = null;
-
-	public TaskDao() {
+	private final Connection connection;
+//tirando o controle do dao sobre a conexão, simplesmente injetando ela no controlador
+//	public TaskDao() {
+	@Autowired // para dizer que essa classe sofrerá inversão de controle nos controladores onde são usado
+//	public TaskDao(Connection connection) {
+	public TaskDao(DataSource dataSource) {
+//		try {
+//			try {
+//				this.connection = new ConnectionFactory().getConnection();
+//			} catch (ClassNotFoundException e) {
+//				System.out.println("Erro ao conectar no banco de dados.");
+//			}
+//		} catch (SQLException e) {
+//			throw new RuntimeException(e);
+//		}
+//		this.connection = connection;
 		try {
-			try {
-				this.connection = new ConnectionFactory().getConnection();
-			} catch (ClassNotFoundException e) {
-				System.out.println("Erro ao conectar no banco de dados.");
-			}
+			this.connection = dataSource.getConnection();
 		} catch (SQLException e) {
-			throw new RuntimeException(e);
+			throw new RuntimeException(e) ;
 		}
-
 	}
 
 

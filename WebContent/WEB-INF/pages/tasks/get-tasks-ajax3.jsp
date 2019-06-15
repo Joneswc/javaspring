@@ -13,9 +13,11 @@
 		function finalizr(id) {
 			$.post( "finalizatask", /* requestmapping que ele chama */
 					{'id':id}, /* dados que ele passa para o beckend */
-					function() {
-						<!-- $("#task_"+id).html("Finalizada") -->
-						location.reload(true); // recarrega todos os objetos da página
+					function(response) {
+						$("#task_"+id).html("Finalizada")
+						$("#task_data_"+id).html(response)
+						// alert(response)
+						<!-- location.reload(true);  -->// recarrega todos os objetos da página
 					}
 			);
 		}
@@ -41,7 +43,7 @@
 			<c:if test="${task.finalizada eq true}">
 				<td>Finalizada</td>
 			</c:if>
-			<td>
+			<td id="task_data_${task.id}">
 				<fmt:formatDate value="${task.dataFinalizacao.time}" pattern="dd/MM/yyyy"/>
 			</td>
 			<td><a href="excluitask?id=${task.id}" >excluir</a></td>

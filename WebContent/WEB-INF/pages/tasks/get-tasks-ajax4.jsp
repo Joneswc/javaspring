@@ -11,11 +11,11 @@
 <body>
 	<script type="text/javascript">
 		function finalizr(id) {
-			$.post( "finalizatask", /* requestmapping que ele chama */
-					{'id':id}, /* dados que ele passa para o beckend */
-					function() {
-						<!-- $("#task_"+id).html("Finalizada") -->
-						location.reload(true); // recarrega todos os objetos da página
+			$.post( "finalizatask",
+					{'id':id},
+					function(response) {
+						console.log(response)
+						$("#task_"+id).html(response)
 					}
 			);
 		}
@@ -31,12 +31,11 @@
 		<th>alterar</th>
 	</tr>
 	<c:forEach items="${tasks}" var="task" >
-		<tr>
+		<tr id="task_${task.id}" bgcolor="#${task.id % 2 ==0 ? 'ffffff' : 'F0F8FF' }">
 			<td>${task.id}</td>
 			<td>${task.descricao}</td>
 			<c:if test="${task.finalizada eq false}">
-				<!-- <td>Não Finalizada</td> -->
-				<td id="task_${task.id}"><a href="#" onclick="finalizr(${task.id})" >Finalizar</a></td>
+				<td><a href="#" onclick="finalizr(${task.id})" >Finalizar</a></td>
 			</c:if>
 			<c:if test="${task.finalizada eq true}">
 				<td>Finalizada</td>
